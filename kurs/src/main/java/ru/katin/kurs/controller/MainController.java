@@ -23,6 +23,7 @@ import ru.katin.kurs.controller.types_pensions.TypesPensionTableItem;
 import ru.katin.kurs.model.TypesPensions;
 import ru.katin.kurs.repository.TypesPensionDao;
 import ru.katin.kurs.services.TypesPensionsServices;
+import ru.katin.kurs.util.Manager;
 
 import java.io.IOException;
 import java.net.URL;
@@ -65,29 +66,16 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    void addEmployee(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(PensionApp.class.getResource("types_pensions/add-edit-pension-dialog.fxml"));
+    void addPensionAction(ActionEvent event) {
+        PensionApp.manager.showDialogAdd("types_pensions/add-edit-pension-dialog.fxml",
+                "Добавить инфу для пенсии");
 
-            Stage dialogStage = new Stage();
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(PensionApp.primaryStage);
-            dialogStage.setMinWidth(400);
-            dialogStage.setScene(new Scene(loader.load()));
-            dialogStage.setTitle("Добавить инфу для пенсии");
-            AddEditPension controller = loader.getController();
-            controller.setAddDialogStage(dialogStage);
-            dialogStage.showAndWait();
-
-            updateList();
-        } catch (IOException e) {
-            System.out.println("Ошибка открытия окна: " + e.getMessage());
-        }
+        updateList();
 
     }
 
     @FXML
-    void deleteEmployee(ActionEvent event) {
+    void deletePensionAction(ActionEvent event) {
         TypesPensionTableItem currentItem = pensionTable.getSelectionModel().getSelectedItem();
         int currentItemId = pensionTable.getSelectionModel().getSelectedIndex();
 
@@ -113,25 +101,14 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    void editEmployee(ActionEvent event) {
+    void editPensionAction(ActionEvent event) {
         TypesPensionTableItem currentItem = pensionTable.getSelectionModel().getSelectedItem();
-        int currentItemId = pensionTable.getSelectionModel().getSelectedIndex();
-        if (currentItemId != -1) {
-            try {
-                FXMLLoader loader = new FXMLLoader(PensionApp.class.getResource("types_pensions/add-edit-pension-dialog.fxml"));
-                Stage dialogStage = new Stage();
-                dialogStage.initModality(Modality.WINDOW_MODAL);
-                dialogStage.initOwner(PensionApp.primaryStage);
-                dialogStage.setMinWidth(400);
-                dialogStage.setScene(new Scene(loader.load()));
-                dialogStage.setTitle("Редактировать инфы о пенсии");
-                AddEditPension controller = loader.getController();
-                controller.setEditDialogStage(dialogStage, currentItem.getTypesPensions());
-                dialogStage.showAndWait();
-                updateList();
-            } catch (IOException e) {
-                System.out.println("Ошибка открытия окна: " + e.getMessage());
-            }
+
+        if (currentItem != null) {
+            PensionApp.manager.showDialogEdit("types_pensions/add-edit-pension-dialog.fxml",
+                    "Изменить", currentItem);
+            updateList();
+
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Предупреждение");
@@ -162,5 +139,23 @@ public class MainController implements Initializable {
             typesPensionTableItemObservable.add(new TypesPensionTableItem(tpsPens));
         }
         pensionTable.setItems(typesPensionTableItemObservable);
+    }
+
+    //==============
+    // Button Scene
+    //==============
+    @FXML
+    private void btnScenePensionAction(ActionEvent event) {
+        //
+    }
+
+    @FXML
+    private void btnSceneRecipientsAction(ActionEvent event) {
+        //
+    }
+
+    @FXML
+    private void btnSceneAppointmentsAction(ActionEvent event) {
+        //
     }
 } 

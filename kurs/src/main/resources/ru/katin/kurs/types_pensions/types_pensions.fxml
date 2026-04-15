@@ -35,9 +35,9 @@
                                         </Button>
                                     </children>
                                 </HBox>
-                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                     <children>
-                                        <Button mnemonicParsing="false" onAction="#addEmployee" style="-fx-background-color: transparent;">
+                                        <Button mnemonicParsing="false" onAction="#addPensionAction" style="-fx-background-color: transparent;">
                                             <graphic>
                                                 <ImageView fitHeight="56.0" fitWidth="64.0">
                                                     <image>
@@ -49,7 +49,7 @@
                                                 <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
                                             </HBox.margin>
                                         </Button>
-                                        <Button mnemonicParsing="false" onAction="#editEmployee" style="-fx-background-color: transparent;">
+                                        <Button mnemonicParsing="false" onAction="#editPensionAction" style="-fx-background-color: transparent;">
                                             <graphic>
                                                 <ImageView fitHeight="57.0" fitWidth="60.0">
                                                     <image>
@@ -61,7 +61,7 @@
                                                 <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
                                             </HBox.margin>
                                         </Button>
-                                        <Button mnemonicParsing="false" onAction="#deleteEmployee" style="-fx-background-color: transparent;">
+                                        <Button mnemonicParsing="false" onAction="#deletePensionAction" style="-fx-background-color: transparent;">
                                             <graphic>
                                                 <ImageView fitHeight="54.0" fitWidth="64.0">
                                                     <image>
@@ -85,6 +85,9 @@
                                                 <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
                                             </HBox.margin>
                                         </Button>
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#btnScenePensionAction" prefHeight="72.0" prefWidth="111.0" text="Виды Пенсия" />
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#btnSceneRecipientsAction" prefHeight="72.0" prefWidth="84.0" text="Получатели" translateX="22.0" />
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#btnSceneAppointmentsAction" prefHeight="72.0" prefWidth="84.0" text="Назначения" translateX="44.0" />
                                     </children>
                                 </HBox>
                             </children>

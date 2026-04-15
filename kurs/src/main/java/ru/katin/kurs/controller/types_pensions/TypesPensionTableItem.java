@@ -14,6 +14,7 @@ public class TypesPensionTableItem {
         this.name = new SimpleStringProperty(typesPensions.getName());
         this.conditions = new SimpleStringProperty(typesPensions.getConditions());
         this.base_size = new SimpleDoubleProperty(typesPensions.getBase_size());
+        this.typesPensions = typesPensions;
     }
 
 

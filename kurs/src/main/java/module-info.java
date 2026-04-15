@@ -8,6 +8,8 @@ module ru.katin.kurs {
     requires org.hibernate.validator;
     requires org.postgresql.jdbc;
     requires jakarta.validation;
+    requires javafx.graphics;
+
     opens ru.katin.kurs to javafx.fxml;
     opens ru.katin.kurs.model to org.hibernate.orm.core, javafx.base;
     exports ru.katin.kurs;

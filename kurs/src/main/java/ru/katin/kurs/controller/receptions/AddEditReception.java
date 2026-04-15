@@ -1,4 +1,4 @@
-package ru.katin.kurs.controller.types_pensions;
+package ru.katin.kurs.controller.receptions;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,10 +10,9 @@ import ru.katin.kurs.model.TypesPensions;
 import ru.katin.kurs.services.TypesPensionsServices;
 
 import java.net.URL;
-import java.sql.Types;
 import java.util.ResourceBundle;
 
-public class AddEditPension implements Initializable {
+public class AddEditReception implements Initializable {
     @FXML
     private TextField nameField;
     @FXML
@@ -43,7 +42,7 @@ public class AddEditPension implements Initializable {
             typesPensions.setBase_size(Double.parseDouble(baseSzField.getText()));
 
             new TypesPensionsServices().save(typesPensions);
-            TypesPensionTableItem typesPensionTableItem = new TypesPensionTableItem(typesPensions);
+            ReceptionTableItem typesPensionTableItem = new ReceptionTableItem(typesPensions);
             dialogStage.close();
         } catch (IllegalArgumentException e) {
             errorLabel.setText(e.getMessage());
