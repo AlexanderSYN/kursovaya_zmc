@@ -16,6 +16,10 @@ module ru.katin.kurs {
     exports ru.katin.kurs.controller;
     opens ru.katin.kurs.controller to javafx.fxml;
     opens ru.katin.kurs.util to org.hibernate.orm.core;
+
     exports ru.katin.kurs.controller.types_pensions;
     opens ru.katin.kurs.controller.types_pensions to javafx.fxml;
+
+    exports ru.katin.kurs.controller.appointments;
+    opens ru.katin.kurs.controller.appointments to javafx.base, javafx.fxml;
 }

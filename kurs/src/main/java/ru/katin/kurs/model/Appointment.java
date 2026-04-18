@@ -1,17 +1,13 @@
 package ru.katin.kurs.model;
 
 import jakarta.persistence.*;
-import javax.naming.spi.InitialContextFactory;
-import java.math.BigDecimal;
-import java.util.Date;
+
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "Appointments")
-public class Appointments {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Table(name = "appointments")
+public class Appointment {
+
 
     @Column(name = "type_pension")
     private String type_pension;
@@ -23,10 +19,12 @@ public class Appointments {
     private double size;
 
     @Column(name = "start_date")
-    private Date start_date;
+    private LocalDate start_date;
 
-    @Column(name = "user_id")
-    private Long user_id;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     public Long getId() {
         return id;
@@ -36,11 +34,11 @@ public class Appointments {
         this.id = id;
     }
 
-    public String getType_pension() {
+    public String getTypePension() {
         return type_pension;
     }
 
-    public void setType_pension(String type_pension) {
+    public void setTypePension(String type_pension) {
         this.type_pension = type_pension;
     }
 
@@ -60,20 +58,12 @@ public class Appointments {
         this.size = size;
     }
 
-    public Date getStart_date() {
+    public LocalDate getStartDate() {
         return start_date;
     }
 
-    public void setStart_date(Date start_date) {
+    public void setStartDate(LocalDate start_date) {
         this.start_date = start_date;
-    }
-
-    public Long getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
     }
 
     @Override
@@ -84,7 +74,6 @@ public class Appointments {
                 ", recipient=" + recipient + '\'' +
                 ", size=" + size +
                 ", start_date= " + start_date +
-                ", user_id=" + user_id +
                 '}';
     }
 

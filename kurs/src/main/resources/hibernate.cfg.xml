@@ -17,6 +17,8 @@
         <property name = "hibernate.show_sql">true</property>
         <!-- Optional: Auto-generate schema -->
         <!-- <property name = "hibernate.hbm2ddl.auto">create</property> -->
-        <mapping class="ru.katin.kurs.model.TypesPensions" />
+        <mapping class="ru.katin.kurs.model.TypePension" />
+        <mapping class="ru.katin.kurs.model.Appointment" />
+        <mapping class="ru.katin.kurs.model.Recipient" />
     </session-factory>
 </hibernate-configuration>

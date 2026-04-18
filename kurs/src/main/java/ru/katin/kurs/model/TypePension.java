@@ -1,12 +1,10 @@
 package ru.katin.kurs.model;
 
 import jakarta.persistence.*;
-import javax.naming.spi.InitialContextFactory;
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "types_pensions")
-public class TypesPensions {
+public class TypePension {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

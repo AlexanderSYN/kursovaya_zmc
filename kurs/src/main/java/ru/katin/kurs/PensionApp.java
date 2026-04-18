@@ -1,26 +1,19 @@
 package ru.katin.kurs;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-import ru.katin.kurs.util.Manager;
+import ru.katin.kurs.util.SceneManager;
 
 import java.io.IOException;
 
 public class PensionApp extends Application {
-    public static Manager manager;
-
-    public static Scene reptions;
-    public static Scene types_pensions;
-    public static Scene appointments;
+    public static SceneManager sceneManager;
 
     @Override
     public void start(Stage stage) throws IOException {
-        manager = new Manager(stage);
-        manager.switchTo("types_pensions/types_pensions.fxml",
+        sceneManager = new SceneManager(stage);
+        sceneManager.switchTo("types_pensions/type_pension.fxml",
                 "Виды пенсии");
-
     }
 
     public static void main(String[] args) {

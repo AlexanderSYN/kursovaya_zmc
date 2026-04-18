@@ -2,19 +2,19 @@ package ru.katin.kurs.controller.types_pensions;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
-import ru.katin.kurs.model.TypesPensions;
+import ru.katin.kurs.model.TypePension;
 
-public class TypesPensionTableItem {
+public class TypePensionTableItem {
     private SimpleStringProperty name;
     private SimpleStringProperty conditions;
     private SimpleDoubleProperty base_size;
-    private TypesPensions typesPensions;
+    private TypePension typePension;
 
-    public TypesPensionTableItem(TypesPensions typesPensions) {
-        this.name = new SimpleStringProperty(typesPensions.getName());
-        this.conditions = new SimpleStringProperty(typesPensions.getConditions());
-        this.base_size = new SimpleDoubleProperty(typesPensions.getBase_size());
-        this.typesPensions = typesPensions;
+    public TypePensionTableItem(TypePension typePension) {
+        this.name = new SimpleStringProperty(typePension.getName());
+        this.conditions = new SimpleStringProperty(typePension.getConditions());
+        this.base_size = new SimpleDoubleProperty(typePension.getBase_size());
+        this.typePension = typePension;
     }
 
 
@@ -54,11 +54,11 @@ public class TypesPensionTableItem {
         this.base_size.set(base_size);
     }
 
-    public void setTypesPension(TypesPensions typesPensions) {
-        this.typesPensions = typesPensions;
+    public void setTypesPension(TypePension typePension) {
+        this.typePension = typePension;
     }
 
-    public TypesPensions getTypesPensions() {
-        return typesPensions;
+    public TypePension getTypesPensions() {
+        return typePension;
     }
 }

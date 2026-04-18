@@ -7,45 +7,40 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import ru.katin.kurs.PensionApp;
-import ru.katin.kurs.controller.types_pensions.AddEditPension;
-import ru.katin.kurs.controller.types_pensions.TypesPensionTableItem;
-import ru.katin.kurs.model.TypesPensions;
-import ru.katin.kurs.repository.TypesPensionDao;
-import ru.katin.kurs.services.TypesPensionsServices;
-import ru.katin.kurs.util.Manager;
+import ru.katin.kurs.controller.types_pensions.TypePensionTableItem;
+import ru.katin.kurs.model.TypePension;
+import ru.katin.kurs.repository.TypePensionDao;
+import ru.katin.kurs.services.TypePensionService;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable {
+import static ru.katin.kurs.PensionApp.sceneManager;
+
+public class TypePensionController implements Initializable {
 
     @FXML
-    private TableView<TypesPensionTableItem> pensionTable;
+    private TableView<TypePensionTableItem> pensionTable;
     @FXML
-    private TableColumn<TypesPensions, String> colName;
+    private TableColumn<TypePension, String> colName;
     @FXML
-    private TableColumn<TypesPensions, String> colConditions;
+    private TableColumn<TypePension, String> colConditions;
     @FXML
-    private TableColumn<TypesPensions, Number> colBaseSize;
+    private TableColumn<TypePension, Number> colBaseSize;
 
-    private List<TypesPensions> typesPensions;
-    private ObservableList<TypesPensionTableItem> typesPensionTableItemObservable;
+    private List<TypePension> typesPensions;
+    private ObservableList<TypePensionTableItem> typePensionTableItemObservable;
 
-    private final TypesPensionDao pensionDao = new TypesPensionDao();
+    private final TypePensionDao pensionDao = new TypePensionDao();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -67,7 +62,7 @@ public class MainController implements Initializable {
 
     @FXML
     void addPensionAction(ActionEvent event) {
-        PensionApp.manager.showDialogAdd("types_pensions/add-edit-pension-dialog.fxml",
+        PensionApp.sceneManager.showDialogAddPension("types_pensions/add-edit-pension-dialog.fxml",
                 "Добавить инфу для пенсии");
 
         updateList();
@@ -76,7 +71,7 @@ public class MainController implements Initializable {
 
     @FXML
     void deletePensionAction(ActionEvent event) {
-        TypesPensionTableItem currentItem = pensionTable.getSelectionModel().getSelectedItem();
+        TypePensionTableItem currentItem = pensionTable.getSelectionModel().getSelectedItem();
         int currentItemId = pensionTable.getSelectionModel().getSelectedIndex();
 
         if (currentItemId != -1) {
@@ -88,7 +83,7 @@ public class MainController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                new TypesPensionsServices().delete(currentItem.getTypesPensions());
+                new TypePensionService().delete(currentItem.getTypesPensions());
                 pensionTable.getItems().remove(currentItemId);
 
             }
@@ -102,10 +97,10 @@ public class MainController implements Initializable {
 
     @FXML
     void editPensionAction(ActionEvent event) {
-        TypesPensionTableItem currentItem = pensionTable.getSelectionModel().getSelectedItem();
+        TypePensionTableItem currentItem = pensionTable.getSelectionModel().getSelectedItem();
 
         if (currentItem != null) {
-            PensionApp.manager.showDialogEdit("types_pensions/add-edit-pension-dialog.fxml",
+            PensionApp.sceneManager.showDialogEditPension("types_pensions/add-edit-pension-dialog.fxml",
                     "Изменить", currentItem);
             updateList();
 
@@ -132,13 +127,13 @@ public class MainController implements Initializable {
     }
 
     public void updateList() {
-        typesPensions = new TypesPensionsServices().findAll();
-        typesPensionTableItemObservable = FXCollections.observableArrayList();
+        typesPensions = new TypePensionService().findAll();
+        typePensionTableItemObservable = FXCollections.observableArrayList();
 
-        for (TypesPensions tpsPens : typesPensions) {
-            typesPensionTableItemObservable.add(new TypesPensionTableItem(tpsPens));
+        for (TypePension tpsPens : typesPensions) {
+            typePensionTableItemObservable.add(new TypePensionTableItem(tpsPens));
         }
-        pensionTable.setItems(typesPensionTableItemObservable);
+        pensionTable.setItems(typePensionTableItemObservable);
     }
 
     //==============
@@ -146,7 +141,8 @@ public class MainController implements Initializable {
     //==============
     @FXML
     private void btnScenePensionAction(ActionEvent event) {
-        //
+        sceneManager.switchTo("types_pensions/type_pension.fxml",
+                "Пенсия");
     }
 
     @FXML
@@ -156,6 +152,7 @@ public class MainController implements Initializable {
 
     @FXML
     private void btnSceneAppointmentsAction(ActionEvent event) {
-        //
+        sceneManager.switchTo("appointment/appointment.fxml",
+                "Назначения");
     }
 } 

@@ -48,7 +48,7 @@ public abstract class BaseDao<T> {
     public List<T> findAll() {
         Session session = getCurrentSession();
         session.beginTransaction();
-        List<T> items = (List<T>) session.createQuery("from " + clazz.getName()).list();
+        List<T> items = (List<T>) session.createQuery("from " + clazz.getName(), clazz).list();
         session.close();
         return items;
     }

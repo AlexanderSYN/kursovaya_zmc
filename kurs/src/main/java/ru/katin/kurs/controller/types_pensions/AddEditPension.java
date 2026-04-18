@@ -6,11 +6,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import ru.katin.kurs.model.TypesPensions;
-import ru.katin.kurs.services.TypesPensionsServices;
+import ru.katin.kurs.model.TypePension;
+import ru.katin.kurs.services.TypePensionService;
 
 import java.net.URL;
-import java.sql.Types;
 import java.util.ResourceBundle;
 
 public class AddEditPension implements Initializable {
@@ -28,7 +27,7 @@ public class AddEditPension implements Initializable {
     private Button okButton;
     private Stage dialogStage;
 
-    private TypesPensions typesPensions;
+    private TypePension typePension;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -36,14 +35,14 @@ public class AddEditPension implements Initializable {
 
     private void add() {
         try {
-            typesPensions = new TypesPensions();
+            typePension = new TypePension();
 
-            typesPensions.setName(nameField.getText());
-            typesPensions.setConditions(conditionsField.getText());
-            typesPensions.setBase_size(Double.parseDouble(baseSzField.getText()));
+            typePension.setName(nameField.getText());
+            typePension.setConditions(conditionsField.getText());
+            typePension.setBase_size(Double.parseDouble(baseSzField.getText()));
 
-            new TypesPensionsServices().save(typesPensions);
-            TypesPensionTableItem typesPensionTableItem = new TypesPensionTableItem(typesPensions);
+            new TypePensionService().save(typePension);
+            TypePensionTableItem typePensionTableItem = new TypePensionTableItem(typePension);
             dialogStage.close();
         } catch (IllegalArgumentException e) {
             errorLabel.setText(e.getMessage());
@@ -52,11 +51,11 @@ public class AddEditPension implements Initializable {
 
     void edit() {
         try {
-            typesPensions.setName(nameField.getText());
-            typesPensions.setConditions(conditionsField.getText());
-            typesPensions.setBase_size(Double.parseDouble(baseSzField.getText()));
+            typePension.setName(nameField.getText());
+            typePension.setConditions(conditionsField.getText());
+            typePension.setBase_size(Double.parseDouble(baseSzField.getText()));
 
-            new TypesPensionsServices().update(typesPensions);
+            new TypePensionService().update(typePension);
             dialogStage.close();
         } catch (IllegalArgumentException e) {
             errorLabel.setText(e.getMessage());
@@ -68,13 +67,13 @@ public class AddEditPension implements Initializable {
         okButton.setOnAction((www) -> add());
     }
 
-    public void setEditDialogStage(Stage dialogStage, TypesPensions typesPensions) {
-        this.typesPensions = typesPensions;
+    public void setEditDialogStagePension(Stage dialogStage, TypePension typePension) {
+        this.typePension = typePension;
         this.dialogStage = dialogStage;
 
-        nameField.setText(typesPensions.getName());
-        conditionsField.setText(typesPensions.getConditions());
-        baseSzField.setText(Double.toString(typesPensions.getBase_size()));
+        nameField.setText(typePension.getName());
+        conditionsField.setText(typePension.getConditions());
+        baseSzField.setText(Double.toString(typePension.getBase_size()));
         okButton.setOnAction((www) -> edit());
     }
 }
