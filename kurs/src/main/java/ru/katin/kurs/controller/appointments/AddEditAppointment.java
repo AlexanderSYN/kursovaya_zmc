@@ -43,7 +43,7 @@ public class AddEditAppointment implements Initializable {
     private Recipient recipient;
 
     List<TypePension> allPension = new TypePensionService().findAll();
-    //List<Recipient> allRecipient = new RecipientService().findAll();
+    List<Recipient> allRecipient = new RecipientService().findAll();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -51,9 +51,9 @@ public class AddEditAppointment implements Initializable {
         for (TypePension pensions : allPension)
             typePensionComboBox.getItems().addAll(pensions.getName());
 
-//        // инициализация combo box recipient
-//        for (Recipient recip : allRecipient)
-//            recipientComboBox.getItems().addAll(recip.getFio());
+        // инициализация combo box recipient
+        for (Recipient recip : allRecipient)
+            recipientComboBox.getItems().addAll(recip.getFio());
 
     }
 
@@ -61,12 +61,11 @@ public class AddEditAppointment implements Initializable {
         try {
             appointment = new Appointment();
 
-            //String selectedRecipient = recipientComboBox.getValue();
+            String selectedRecipient = recipientComboBox.getValue();
             String selectedTypePension = typePensionComboBox.getValue();
 
             appointment.setTypePension(selectedTypePension);
-            //appointment.setRecipient(selectedRecipient);
-            appointment.setRecipient("123");
+            appointment.setRecipient(selectedRecipient);
             appointment.setSize(Double.parseDouble(sizeField.getText()));
             appointment.setStartDate(startDatePicker.getValue());
 

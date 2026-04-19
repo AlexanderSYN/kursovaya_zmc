@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import static ru.katin.kurs.PensionApp.dialogManager;
 import static ru.katin.kurs.PensionApp.sceneManager;
 
 public class AppointmentController implements Initializable {
@@ -43,7 +44,6 @@ public class AppointmentController implements Initializable {
 
     private List<Appointment> appointmentList;
     private ObservableList<AppointmentTableItem> appointmentTableItemObservableList;
-    private final AppointmentDao appointmentDao = new AppointmentDao();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -51,11 +51,13 @@ public class AppointmentController implements Initializable {
         colSize.setCellValueFactory(new PropertyValueFactory<>("size"));
         colStartDate.setCellValueFactory(new PropertyValueFactory<>("startDate"));
         colTypePension.setCellValueFactory(new PropertyValueFactory<>("typePension"));
+
+        updateList();
     }
 
     @FXML
     void addAppointmentAction(ActionEvent event) {
-        sceneManager.showDialogAddAppointment("appointment/add-edit-appointment-dialog.fxml",
+        dialogManager.showDialogAddAppointment("appointment/add-edit-appointment-dialog.fxml",
                 "Добавление Назначения");
         updateList();
     }
@@ -65,7 +67,7 @@ public class AppointmentController implements Initializable {
         AppointmentTableItem currentItem = appointmentTable.getSelectionModel().getSelectedItem();
 
         if (currentItem != null) {
-            sceneManager.showDialogEditAppointment("appointment/add-edit-appointment-dialog.fxml",
+            dialogManager.showDialogEditAppointment("appointment/add-edit-appointment-dialog.fxml",
                     "Изменить", currentItem);
             updateList();
 
@@ -138,7 +140,8 @@ public class AppointmentController implements Initializable {
 
     @FXML
     private void btnSceneRecipientsAction(ActionEvent event) {
-        //
+        sceneManager.switchTo("recipient/recipient.fxml",
+                "Получатель");
     }
 
     @FXML
@@ -146,5 +149,4 @@ public class AppointmentController implements Initializable {
         sceneManager.switchTo("appointment/appointment.fxml",
                 "Назначения");
     }
-
 }

@@ -62,7 +62,7 @@ public class TypePensionController implements Initializable {
 
     @FXML
     void addPensionAction(ActionEvent event) {
-        PensionApp.sceneManager.showDialogAddPension("types_pensions/add-edit-pension-dialog.fxml",
+        PensionApp.dialogManager.showDialogAddPension("types_pensions/add-edit-pension-dialog.fxml",
                 "Добавить инфу для пенсии");
 
         updateList();
@@ -100,7 +100,7 @@ public class TypePensionController implements Initializable {
         TypePensionTableItem currentItem = pensionTable.getSelectionModel().getSelectedItem();
 
         if (currentItem != null) {
-            PensionApp.sceneManager.showDialogEditPension("types_pensions/add-edit-pension-dialog.fxml",
+            PensionApp.dialogManager.showDialogEditPension("types_pensions/add-edit-pension-dialog.fxml",
                     "Изменить", currentItem);
             updateList();
 
@@ -112,14 +112,7 @@ public class TypePensionController implements Initializable {
         }
     }
 
-    private void setCellValueFactories() {
-        colName.setCellValueFactory(cellData -> new
-                SimpleStringProperty(cellData.getValue().getName()));
-        colConditions.setCellValueFactory(cellData -> new
-                SimpleStringProperty(cellData.getValue().getConditions()));
-        colBaseSize.setCellValueFactory(cellData -> new
-                SimpleDoubleProperty(cellData.getValue().getBase_size()));
-    }
+
 
     @FXML
     void updateTypesPension(ActionEvent event) {
@@ -147,7 +140,8 @@ public class TypePensionController implements Initializable {
 
     @FXML
     private void btnSceneRecipientsAction(ActionEvent event) {
-        //
+        sceneManager.switchTo("recipient/recipient.fxml",
+                "Получатель");
     }
 
     @FXML

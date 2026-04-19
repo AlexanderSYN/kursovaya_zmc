@@ -2,10 +2,10 @@ package ru.katin.kurs.model;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "Reception")
+@Table(name = "Recipient")
 public class Recipient {
     @Id
     @Column(name = "id")
@@ -13,19 +13,17 @@ public class Recipient {
     private Long id;
 
     @Column(name = "snils")
-    private int snils;
+    private long snils;
 
     @Column(name = "fio")
     private String fio;
 
     @Column(name = "birth_date")
-    private Date birth_date;
+    private LocalDate birth_date;
 
     @Column(name = "address")
     private String address;
 
-    @Column(name = "user_id")
-    private Long user_id;
 
     public Long getId() {
         return id;
@@ -35,11 +33,11 @@ public class Recipient {
         this.id = id;
     }
 
-    public int getSnils() {
+    public long getSnils() {
         return snils;
     }
 
-    public void setSnils(int snils) {
+    public void setSnils(long snils) {
         this.snils = snils;
     }
 
@@ -51,12 +49,12 @@ public class Recipient {
         this.fio = fio;
     }
 
-    public Date getBirth_date() {
+    public LocalDate getBirthDate() {
         return birth_date;
     }
 
-    public void setBirth_date(Date birth_date) {
-        this.birth_date = birth_date;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birth_date = birthDate;
     }
 
     public String getAddress() {
@@ -67,23 +65,14 @@ public class Recipient {
         this.address = address;
     }
 
-    public Long getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
-    }
-
     @Override
     public String toString() {
         return "Employee{" +
                 "id='" + id + '\'' +
                 ", snils='" + snils + '\'' +
                 ", fio=" + fio + '\'' +
-                ", birth_date=" + birth_date +
+                ", birthDate=" + birth_date +
                 ", address= " + address +
-                ", user_id=" + user_id +
                 '}';
     }
 

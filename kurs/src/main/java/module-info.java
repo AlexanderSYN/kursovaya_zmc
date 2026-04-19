@@ -22,4 +22,7 @@ module ru.katin.kurs {
 
     exports ru.katin.kurs.controller.appointments;
     opens ru.katin.kurs.controller.appointments to javafx.base, javafx.fxml;
+
+    exports ru.katin.kurs.controller.recipient;
+    opens ru.katin.kurs.controller.recipient to javafx.base, javafx.fxml;
 }
