@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Recipient")
+@Table(name = "recipient")
 public class Recipient {
     @Id
     @Column(name = "id")
@@ -67,13 +67,7 @@ public class Recipient {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "id='" + id + '\'' +
-                ", snils='" + snils + '\'' +
-                ", fio=" + fio + '\'' +
-                ", birthDate=" + birth_date +
-                ", address= " + address +
-                '}';
+        return fio;
     }
 
 

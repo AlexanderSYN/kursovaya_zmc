@@ -3,7 +3,7 @@ package ru.katin.kurs.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "types_pensions")
+@Table(name = "type_pension")
 public class TypePension {
     @Id
     @Column(name = "id")
@@ -13,11 +13,11 @@ public class TypePension {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "conditions")
+    @Column(name = "condition")
     private String conditions;
 
     @Column(name = "base_size")
-    private double base_size;
+    private double baseSize;
 
     public Long getId() {
         return id;
@@ -25,22 +25,6 @@ public class TypePension {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getConditions() {
-        return conditions;
-    }
-
-    public void setConditions(String conditions) {
-        this.conditions = conditions;
-    }
-
-    public double getBase_size() {
-        return base_size;
-    }
-
-    public void setBase_size(double base_size) {
-        this.base_size = base_size;
     }
 
     public String getName() {
@@ -51,14 +35,25 @@ public class TypePension {
         this.name = name;
     }
 
+    public String getConditions() {
+        return conditions;
+    }
+
+    public void setConditions(String conditions) {
+        this.conditions = conditions;
+    }
+
+    public double getBaseSize() {
+        return baseSize;
+    }
+
+    public void setBaseSize(double baseSize) {
+        this.baseSize = baseSize;
+    }
+
     @Override
     public String toString() {
-        return "Employee{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", conditions=" + conditions + '\'' +
-                ", base_size=" + base_size +
-                '}';
+        return name;
     }
 
 

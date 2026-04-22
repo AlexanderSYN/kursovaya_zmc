@@ -39,7 +39,7 @@ public class AddEditPension implements Initializable {
 
             typePension.setName(nameField.getText());
             typePension.setConditions(conditionsField.getText());
-            typePension.setBase_size(Double.parseDouble(baseSzField.getText()));
+            typePension.setBaseSize(Double.parseDouble(baseSzField.getText()));
 
             new TypePensionService().save(typePension);
             TypePensionTableItem typePensionTableItem = new TypePensionTableItem(typePension);
@@ -53,7 +53,7 @@ public class AddEditPension implements Initializable {
         try {
             typePension.setName(nameField.getText());
             typePension.setConditions(conditionsField.getText());
-            typePension.setBase_size(Double.parseDouble(baseSzField.getText()));
+            typePension.setBaseSize(Double.parseDouble(baseSzField.getText()));
 
             new TypePensionService().update(typePension);
             dialogStage.close();
@@ -73,7 +73,7 @@ public class AddEditPension implements Initializable {
 
         nameField.setText(typePension.getName());
         conditionsField.setText(typePension.getConditions());
-        baseSzField.setText(Double.toString(typePension.getBase_size()));
+        baseSzField.setText(Double.toString(typePension.getBaseSize()));
         okButton.setOnAction((www) -> edit());
     }
 }

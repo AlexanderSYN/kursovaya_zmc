@@ -10,55 +10,42 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
 public class AppointmentTableItem {
-    private SimpleStringProperty typePension;
-    private SimpleStringProperty recipient;
+    private SimpleObjectProperty typePension;
+    private SimpleObjectProperty recipient;
     private SimpleDoubleProperty size;
     private SimpleObjectProperty<LocalDate> startDate;
     private Appointment appointment;
 
     public AppointmentTableItem(Appointment appointment) {
-        this.typePension = new SimpleStringProperty(appointment.getTypePension());
-        this.recipient = new SimpleStringProperty(appointment.getRecipient());
+        this.typePension = new SimpleObjectProperty<>(appointment.getTypePension());
+        this.recipient = new SimpleObjectProperty<>(appointment.getRecipient());
         this.size = new SimpleDoubleProperty(appointment.getSize());
         this.startDate = new SimpleObjectProperty<>(appointment.getStartDate());
         this.appointment = appointment;
     }
 
-
     public String getTypePension() {
-        return typePension.get();
+        return typePension.get().toString();
     }
 
-    public SimpleStringProperty typePensionProperty() {
+    public SimpleObjectProperty typePensionProperty() {
         return typePension;
     }
 
-    public void setTypePension(String typePension) {
+    public void setTypePension(Object typePension) {
         this.typePension.set(typePension);
     }
 
     public String getRecipient() {
-        return recipient.get();
+        return recipient.get().toString();
     }
 
-    public SimpleStringProperty recipientProperty() {
+    public SimpleObjectProperty recipientProperty() {
         return recipient;
     }
 
-    public void setRecipient(String recipient) {
+    public void setRecipient(Object recipient) {
         this.recipient.set(recipient);
-    }
-
-    public LocalDate getStartDate() {
-        return startDate.get();
-    }
-
-    public SimpleObjectProperty<LocalDate> startDateProperty() {
-        return startDate;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate.set(startDate);
     }
 
     public double getSize() {
@@ -73,6 +60,18 @@ public class AppointmentTableItem {
         this.size.set(size);
     }
 
+    public LocalDate getStartDate() {
+        return startDate.get();
+    }
+
+    public SimpleObjectProperty<LocalDate> startDateProperty() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate.set(startDate);
+    }
+
     public Appointment getAppointment() {
         return appointment;
     }
@@ -80,4 +79,5 @@ public class AppointmentTableItem {
     public void setAppointment(Appointment appointment) {
         this.appointment = appointment;
     }
+
 }

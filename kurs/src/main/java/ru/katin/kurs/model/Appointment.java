@@ -4,27 +4,29 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+import ru.katin.kurs.model.TypePension;
+
 @Entity
-@Table(name = "appointments")
+@Table(name = "appointment")
 public class Appointment {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "type_pension")
+    private TypePension typePension;
 
-    @Column(name = "type_pension")
-    private String type_pension;
-
-    @Column(name = "recipient")
-    private String recipient;
+    @ManyToOne
+    @JoinColumn(name = "recipient")
+    private Recipient recipient;
 
     @Column(name = "size")
     private double size;
 
     @Column(name = "start_date")
     private LocalDate start_date;
-
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     public Long getId() {
         return id;
@@ -34,19 +36,19 @@ public class Appointment {
         this.id = id;
     }
 
-    public String getTypePension() {
-        return type_pension;
+    public TypePension getTypePension() {
+        return typePension;
     }
 
-    public void setTypePension(String type_pension) {
-        this.type_pension = type_pension;
+    public void setTypePension(TypePension type_pension) {
+        this.typePension = type_pension;
     }
 
-    public String getRecipient() {
+    public Recipient getRecipient() {
         return recipient;
     }
 
-    public void setRecipient(String recipient) {
+    public void setRecipient(Recipient recipient) {
         this.recipient = recipient;
     }
 
@@ -70,7 +72,7 @@ public class Appointment {
     public String toString() {
         return "Employee{" +
                 "id='" + id + '\'' +
-                ", type_pension='" + type_pension + '\'' +
+                ", type_pension='" + typePension + '\'' +
                 ", recipient=" + recipient + '\'' +
                 ", size=" + size +
                 ", start_date= " + start_date +

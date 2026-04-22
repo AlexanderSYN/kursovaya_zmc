@@ -13,7 +13,7 @@ public class TypePensionTableItem {
     public TypePensionTableItem(TypePension typePension) {
         this.name = new SimpleStringProperty(typePension.getName());
         this.conditions = new SimpleStringProperty(typePension.getConditions());
-        this.base_size = new SimpleDoubleProperty(typePension.getBase_size());
+        this.base_size = new SimpleDoubleProperty(typePension.getBaseSize());
         this.typePension = typePension;
     }
 

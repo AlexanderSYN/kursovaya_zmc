@@ -12,6 +12,8 @@ import ru.katin.kurs.services.RecipientService;
 import ru.katin.kurs.services.TypePensionService;
 
 import javafx.event.ActionEvent;
+
+import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -25,7 +27,7 @@ public class AddEditAppointment implements Initializable {
     private Button okButton;
 
     @FXML
-    private ComboBox<String> recipientComboBox;
+    private ComboBox<Recipient> recipientComboBox;
 
     @FXML
     private DatePicker startDatePicker;
@@ -34,7 +36,7 @@ public class AddEditAppointment implements Initializable {
     private TextField sizeField;
 
     @FXML
-    private ComboBox<String> typePensionComboBox;
+    private ComboBox<TypePension> typePensionComboBox;
 
     private Stage dialogStage;
 
@@ -48,12 +50,8 @@ public class AddEditAppointment implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // инициализация combo box typePension
-        for (TypePension pensions : allPension)
-            typePensionComboBox.getItems().addAll(pensions.getName());
-
-        // инициализация combo box recipient
-        for (Recipient recip : allRecipient)
-            recipientComboBox.getItems().addAll(recip.getFio());
+        typePensionComboBox.getItems().addAll(allPension);
+        recipientComboBox.getItems().addAll(allRecipient);
 
     }
 
@@ -61,8 +59,8 @@ public class AddEditAppointment implements Initializable {
         try {
             appointment = new Appointment();
 
-            String selectedRecipient = recipientComboBox.getValue();
-            String selectedTypePension = typePensionComboBox.getValue();
+            Recipient selectedRecipient = recipientComboBox.getValue();
+            TypePension selectedTypePension = typePensionComboBox.getValue();
 
             appointment.setTypePension(selectedTypePension);
             appointment.setRecipient(selectedRecipient);
@@ -81,11 +79,10 @@ public class AddEditAppointment implements Initializable {
 
     void edit() {
         try {
-            String selectedTypePension = typePensionComboBox.getValue();
+            TypePension selectedTypePension = typePensionComboBox.getValue();
 
             appointment.setTypePension(typePensionComboBox.getValue());
-            //appointment.setRecipient(recipientComboBox.getValue());
-            appointment.setRecipient("test");
+            appointment.setRecipient(recipientComboBox.getValue());
             appointment.setSize(Double.parseDouble(sizeField.getText()));
             appointment.setStartDate(startDatePicker.getValue());
 
