@@ -69,6 +69,4 @@ public class Recipient {
     public String toString() {
         return fio;
     }
-
-
 }

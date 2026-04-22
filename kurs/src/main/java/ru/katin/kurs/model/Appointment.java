@@ -19,7 +19,7 @@ public class Appointment {
     private TypePension typePension;
 
     @ManyToOne
-    @JoinColumn(name = "recipient")
+    @JoinColumn(name = "recipients")
     private Recipient recipient;
 
     @Column(name = "size")
@@ -78,5 +78,4 @@ public class Appointment {
                 ", start_date= " + start_date +
                 '}';
     }
-
 }

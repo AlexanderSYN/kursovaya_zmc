@@ -13,7 +13,7 @@ public class HibernateSessionFactoryUtil {
                 configuration.configure("hibernate.cfg.xml");
                 sessionFactory = configuration.buildSessionFactory();
             } catch (Exception e) {
-                System.out.println("Исключение!" + e);
+                System.out.println("Исключение: " + e);
             }
         }
         return sessionFactory;
