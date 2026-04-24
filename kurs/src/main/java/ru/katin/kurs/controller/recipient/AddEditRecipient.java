@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import ru.katin.kurs.controller.RecipientController;
 import ru.katin.kurs.model.Recipient;
 import ru.katin.kurs.services.RecipientService;
 import ru.katin.kurs.util.AlertManager;
@@ -12,7 +11,7 @@ import ru.katin.kurs.util.AlertManager;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static ru.katin.kurs.PensionApp.dialogManager;
+import static ru.katin.kurs.util.CheckObjectsForEmpty.validateRecipientFields;
 
 public class AddEditRecipient implements Initializable {
 
@@ -20,7 +19,7 @@ public class AddEditRecipient implements Initializable {
     private TextField addressField;
 
     @FXML
-    private DatePicker birthDateComboBox;
+    private DatePicker birthDatePicker;
 
     @FXML
     private Label errorLabel;
@@ -44,26 +43,36 @@ public class AddEditRecipient implements Initializable {
 
     private void add() {
         try {
-            long snils = Long.parseLong(snilsField.getText());
+            if (!validateRecipientFields(
+                    errorLabel,
+                    snilsField,
+                    fioField,
+                    addressField,
+                    birthDatePicker
+            )) {
+                long snils = Long.parseLong(snilsField.getText());
 
-            recipient = new Recipient();
+                recipient = new Recipient();
 
-            if (String.valueOf(snils).length() == 11)
-                recipient.setSnils(snils);
-            else {
-                AlertManager.errorAlert("Ошибка",
-                        "Неверно записан снилс", "введите 11 цифр в снилсе");
-                return;
+                if (String.valueOf(snils).length() == 11)
+                    recipient.setSnils(snils);
+                else {
+                    AlertManager.errorAlert("Ошибка",
+                            "Неверно записан снилс", "введите 11 цифр в снилсе");
+                    return;
+                }
+                recipient.setFio(fioField.getText());
+                recipient.setAddress(addressField.getText());
+                recipient.setBirthDate(birthDatePicker.getValue());
+
+                new RecipientService().save(recipient);
+                RecipientTableItem recipientTableItem =
+                        new RecipientTableItem(recipient);
+
+                dialogStage.close();
             }
-            recipient.setFio(fioField.getText());
-            recipient.setAddress(addressField.getText());
-            recipient.setBirthDate(birthDateComboBox.getValue());
+            else return;
 
-            new RecipientService().save(recipient);
-            RecipientTableItem recipientTableItem =
-                    new RecipientTableItem(recipient);
-
-            dialogStage.close();
         } catch (IllegalArgumentException e) {
             errorLabel.setText(e.getMessage());
             AlertManager.preparedErrorAlertException("Ошибка добавления", e);
@@ -75,7 +84,7 @@ public class AddEditRecipient implements Initializable {
             recipient.setSnils(Long.parseLong(snilsField.getText()));
             recipient.setFio(fioField.getText());
             recipient.setAddress(addressField.getText());
-            recipient.setBirthDate(birthDateComboBox.getValue());
+            recipient.setBirthDate(birthDatePicker.getValue());
 
             new RecipientService().update(recipient);
 
@@ -96,7 +105,7 @@ public class AddEditRecipient implements Initializable {
 
         snilsField.setText(String.valueOf(recipient.getSnils()));
         fioField.setText(recipient.getFio());
-        birthDateComboBox.setValue(recipient.getBirthDate());
+        birthDatePicker.setValue(recipient.getBirthDate());
         addressField.setText(recipient.getAddress());
 
         okButton.setOnAction((www) -> edit());

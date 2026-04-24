@@ -18,7 +18,7 @@
         <Label text="базовый размер" GridPane.rowIndex="2" />
         <TextField fx:id="baseSzField" GridPane.columnIndex="5" GridPane.rowIndex="2" />
         <Button fx:id="okButton" contentDisplay="CENTER" mnemonicParsing="false" text="ОК" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="9" />
-        <Label fx:id="errorLabel" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+        <Label fx:id="errorLabel" prefHeight="29.0" prefWidth="149.0" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="6" />
       <Label text="название" />
       <TextField fx:id="nameField" GridPane.columnIndex="5" />
     </children>

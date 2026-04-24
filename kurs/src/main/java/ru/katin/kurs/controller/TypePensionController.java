@@ -1,8 +1,6 @@
 package ru.katin.kurs.controller;
 
 import javafx.application.Platform;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -112,8 +110,6 @@ public class TypePensionController implements Initializable {
         }
     }
 
-
-
     @FXML
     void updateTypesPension(ActionEvent event) {
         updateList();
@@ -135,13 +131,13 @@ public class TypePensionController implements Initializable {
     @FXML
     private void btnScenePensionAction(ActionEvent event) {
         sceneManager.switchTo("types_pensions/type_pension.fxml",
-                "Пенсия");
+                "Виды Пенсий");
     }
 
     @FXML
     private void btnSceneRecipientsAction(ActionEvent event) {
         sceneManager.switchTo("recipient/recipient.fxml",
-                "Получатель");
+                "Получатели");
     }
 
     @FXML

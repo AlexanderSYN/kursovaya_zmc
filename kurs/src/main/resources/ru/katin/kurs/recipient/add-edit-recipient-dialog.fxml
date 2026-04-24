@@ -17,9 +17,9 @@
         <Label prefHeight="18.0" prefWidth="71.0" text="Адрес" GridPane.columnIndex="0" GridPane.rowIndex="2" />
         <Label prefHeight="26.0" prefWidth="87.0" text="Дата Рождения" GridPane.rowIndex="3" />
         <Button fx:id="okButton" contentDisplay="CENTER" mnemonicParsing="false" text="ОК" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="10" />
-        <Label fx:id="errorLabel" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+        <Label fx:id="errorLabel" prefHeight="24.0" prefWidth="164.0" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="7" />
         <Label prefHeight="17.0" prefWidth="78.0" text="ФИО" GridPane.rowIndex="1" />
-        <DatePicker fx:id="birthDateComboBox" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+        <DatePicker fx:id="birthDatePicker" GridPane.columnIndex="5" GridPane.rowIndex="3" />
         <Label prefHeight="16.0" prefWidth="56.0" text="СНИЛС" />
         <TextField fx:id="snilsField" GridPane.columnIndex="5" />
         <TextField fx:id="fioField" GridPane.columnIndex="5" GridPane.rowIndex="1" />

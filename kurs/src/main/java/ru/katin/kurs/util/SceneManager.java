@@ -2,18 +2,9 @@ package ru.katin.kurs.util;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import ru.katin.kurs.controller.appointments.AppointmentTableItem;
-import ru.katin.kurs.controller.recipient.AddEditRecipient;
-import ru.katin.kurs.controller.types_pensions.TypePensionTableItem;
-
-import ru.katin.kurs.controller.types_pensions.AddEditPension;
-import ru.katin.kurs.controller.appointments.AddEditAppointment;
-
 import java.io.IOException;
-import java.util.Arrays;
 
 import static ru.katin.kurs.util.AlertManager.*;
 

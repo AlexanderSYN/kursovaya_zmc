@@ -8,12 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.transform.Transform;
-import ru.katin.kurs.PensionApp;
 import ru.katin.kurs.controller.appointments.AppointmentTableItem;
 import ru.katin.kurs.model.Appointment;
-import ru.katin.kurs.repository.AppointmentDao;
 import ru.katin.kurs.services.AppointmentService;
 
 import java.net.URL;
@@ -90,7 +86,7 @@ public class AppointmentController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Подтверждение удаления");
             alert.setHeaderText("Удаление записи");
-            alert.setContentText("Вы действительно хотите удалить \"" + currentItem.getAppointment() + "\"?");
+            alert.setContentText("Вы действительно хотите удалить \"" + currentItem.getRecipient() + "\"?");
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.isPresent() && result.get() == ButtonType.OK) {
@@ -135,13 +131,13 @@ public class AppointmentController implements Initializable {
     @FXML
     private void btnScenePensionAction(ActionEvent event) {
         sceneManager.switchTo("types_pensions/type_pension.fxml",
-                "Пенсия");
+                "Виды Пенсий");
     }
 
     @FXML
     private void btnSceneRecipientsAction(ActionEvent event) {
         sceneManager.switchTo("recipient/recipient.fxml",
-                "Получатель");
+                "Получатели");
     }
 
     @FXML

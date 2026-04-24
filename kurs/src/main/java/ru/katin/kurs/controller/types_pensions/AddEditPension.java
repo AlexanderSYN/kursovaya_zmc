@@ -9,6 +9,8 @@ import javafx.stage.Stage;
 import ru.katin.kurs.model.TypePension;
 import ru.katin.kurs.services.TypePensionService;
 
+import static ru.katin.kurs.util.CheckObjectsForEmpty.validateTypePensionFields;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -35,15 +37,23 @@ public class AddEditPension implements Initializable {
 
     private void add() {
         try {
-            typePension = new TypePension();
+            if (!validateTypePensionFields(
+                    errorLabel,
+                    nameField,
+                    conditionsField,
+                    baseSzField
+            )) {
+                typePension = new TypePension();
 
-            typePension.setName(nameField.getText());
-            typePension.setConditions(conditionsField.getText());
-            typePension.setBaseSize(Double.parseDouble(baseSzField.getText()));
+                typePension.setName(nameField.getText());
+                typePension.setConditions(conditionsField.getText());
+                typePension.setBaseSize(Double.parseDouble(baseSzField.getText()));
 
-            new TypePensionService().save(typePension);
-            TypePensionTableItem typePensionTableItem = new TypePensionTableItem(typePension);
-            dialogStage.close();
+                new TypePensionService().save(typePension);
+                TypePensionTableItem typePensionTableItem = new TypePensionTableItem(typePension);
+                dialogStage.close();
+            }
+            else return;
         } catch (IllegalArgumentException e) {
             errorLabel.setText(e.getMessage());
         }

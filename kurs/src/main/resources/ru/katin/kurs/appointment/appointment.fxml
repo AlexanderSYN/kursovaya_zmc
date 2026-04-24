@@ -85,7 +85,7 @@
                                                 <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
                                             </HBox.margin>
                                         </Button>
-                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#btnScenePensionAction" prefHeight="72.0" prefWidth="167.0" text="Виды Пенсия" />
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#btnScenePensionAction" prefHeight="72.0" prefWidth="167.0" text="Виды Пенсии" />
                               <Button alignment="CENTER" mnemonicParsing="false" onAction="#btnSceneRecipientsAction" prefHeight="72.0" prefWidth="139.0" text="Получатели" translateX="22.0" />
                               <Button alignment="CENTER" mnemonicParsing="false" onAction="#btnSceneAppointmentsAction" prefHeight="72.0" prefWidth="153.0" text="Назначения" translateX="44.0" />
                                     </children>
@@ -98,8 +98,8 @@
                     <children>
                         <TableView fx:id="appointmentTable" layoutX="127.0" layoutY="-37.0" prefHeight="163.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <columns>
-                                <TableColumn fx:id="colTypePension" prefWidth="75.0" text="Вид пенсии" />
-                                <TableColumn fx:id="colRecipient" prefWidth="75.0" text="Получатель" />
+                                <TableColumn fx:id="colTypePension" prefWidth="75.0" text="Виды пенсии" />
+                                <TableColumn fx:id="colRecipient" prefWidth="75.0" text="Получатели" />
                         <TableColumn fx:id="colSize" prefWidth="75.0" text="Размер" />
                         <TableColumn fx:id="colStartDate" prefWidth="75.0" text="Дата Начало" />
                             </columns>

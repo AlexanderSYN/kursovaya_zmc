@@ -16,24 +16,26 @@
     </padding>
     <children>
         <Label prefHeight="18.0" prefWidth="71.0" text="Получатель" GridPane.rowIndex="1" />
-        <Button fx:id="okButton" contentDisplay="CENTER" mnemonicParsing="false" text="ОК" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="11" />
+        <Button fx:id="okButton" contentDisplay="CENTER" mnemonicParsing="false" text="ОК" GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="11" />
         <Label fx:id="errorLabel" GridPane.columnSpan="2" GridPane.rowIndex="8" />
         <Label prefHeight="17.0" prefWidth="78.0" text="Вид пенсии" />
-        <ComboBox fx:id="typePensionComboBox" prefHeight="25.0" prefWidth="167.0" GridPane.columnIndex="5" />
-        <DatePicker fx:id="startDatePicker" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-        <ComboBox fx:id="recipientComboBox" prefHeight="25.0" prefWidth="166.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+        <ComboBox fx:id="typePensionComboBox" prefHeight="25.0" prefWidth="167.0" GridPane.columnIndex="6" />
+        <DatePicker fx:id="startDatePicker" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+        <ComboBox fx:id="recipientComboBox" prefHeight="25.0" prefWidth="166.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
       <Label text="Дата начала" GridPane.rowIndex="4" />
       <Label prefHeight="23.0" prefWidth="67.0" text="размер" GridPane.rowIndex="3" />
-      <TextField fx:id="sizeField" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+      <TextField fx:id="sizeField" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+      <Label fx:id="errorLabel" prefHeight="17.0" prefWidth="174.0" GridPane.columnIndex="6" GridPane.rowIndex="8" />
     </children>
     <columnConstraints>
         <ColumnConstraints maxWidth="68.0" minWidth="68.0" prefWidth="68.0" />
         <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
+        <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
+        <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
         <ColumnConstraints />
         <ColumnConstraints />
         <ColumnConstraints />
-        <ColumnConstraints />
-        <ColumnConstraints />
+      <ColumnConstraints />
     </columnConstraints>
     <rowConstraints>
       <RowConstraints minHeight="10.0" prefHeight="30.0" />

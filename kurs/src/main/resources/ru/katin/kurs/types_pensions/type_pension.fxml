@@ -85,7 +85,7 @@
                                                 <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
                                             </HBox.margin>
                                         </Button>
-                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#btnScenePensionAction" prefHeight="72.0" prefWidth="167.0" text="Виды Пенсия" />
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#btnScenePensionAction" prefHeight="72.0" prefWidth="167.0" text="Виды Пенсии" />
                               <Button alignment="CENTER" mnemonicParsing="false" onAction="#btnSceneRecipientsAction" prefHeight="72.0" prefWidth="139.0" text="Получатели" translateX="22.0" />
                               <Button alignment="CENTER" mnemonicParsing="false" onAction="#btnSceneAppointmentsAction" prefHeight="72.0" prefWidth="153.0" text="Назначения" translateX="44.0" />
                                     </children>

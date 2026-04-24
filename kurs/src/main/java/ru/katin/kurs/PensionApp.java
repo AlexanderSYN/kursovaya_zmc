@@ -16,7 +16,7 @@ public class PensionApp extends Application {
         dialogManager = new DialogManager(stage);
         sceneManager = new SceneManager(stage);
         sceneManager.switchTo("types_pensions/type_pension.fxml",
-                "Виды пенсии");
+                "Виды Пенсий");
     }
 
     public static void main(String[] args) {

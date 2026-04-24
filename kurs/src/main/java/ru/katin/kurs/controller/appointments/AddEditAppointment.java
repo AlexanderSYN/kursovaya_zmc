@@ -11,23 +11,23 @@ import ru.katin.kurs.services.AppointmentService;
 import ru.katin.kurs.services.RecipientService;
 import ru.katin.kurs.services.TypePensionService;
 
-import javafx.event.ActionEvent;
 
-import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class AddEditAppointment implements Initializable {
+import static ru.katin.kurs.util.CheckObjectsForEmpty.validateAppointmentFields;
+import static ru.katin.kurs.util.AlertManager.*;
 
-    @FXML
-    private Label errorLabel;
+public class AddEditAppointment implements Initializable {
 
     @FXML
     private Button okButton;
 
     @FXML
     private ComboBox<Recipient> recipientComboBox;
+    @FXML
+    private ComboBox<TypePension> typePensionComboBox;
 
     @FXML
     private DatePicker startDatePicker;
@@ -36,7 +36,7 @@ public class AddEditAppointment implements Initializable {
     private TextField sizeField;
 
     @FXML
-    private ComboBox<TypePension> typePensionComboBox;
+    private Label errorLabel;
 
     private Stage dialogStage;
 
@@ -59,21 +59,29 @@ public class AddEditAppointment implements Initializable {
         try {
             appointment = new Appointment();
 
-            Recipient selectedRecipient = recipientComboBox.getValue();
-            TypePension selectedTypePension = typePensionComboBox.getValue();
+            if (!validateAppointmentFields(
+                    errorLabel, typePensionComboBox, recipientComboBox,
+                    sizeField, startDatePicker)) {
 
-            appointment.setTypePension(selectedTypePension);
-            appointment.setRecipient(selectedRecipient);
-            appointment.setSize(Double.parseDouble(sizeField.getText()));
-            appointment.setStartDate(startDatePicker.getValue());
+                Recipient selectedRecipient = recipientComboBox.getValue();
+                TypePension selectedTypePension = typePensionComboBox.getValue();
 
-            new AppointmentService().save(appointment);
-            AppointmentTableItem appointmentTableItem =
-                    new AppointmentTableItem(appointment);
+                appointment.setTypePension(selectedTypePension);
+                appointment.setRecipient(selectedRecipient);
+                appointment.setSize(Double.parseDouble(sizeField.getText()));
+                appointment.setStartDate(startDatePicker.getValue());
 
-            dialogStage.close();
+                new AppointmentService().save(appointment);
+                AppointmentTableItem appointmentTableItem =
+                        new AppointmentTableItem(appointment);
+
+                dialogStage.close();
+
+            }
+            else return;
+
         } catch (IllegalArgumentException e) {
-            errorLabel.setText(e.getMessage());
+            preparedErrorAlertException("Ошибка добавления", e);
         }
     }
 
