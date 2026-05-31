@@ -2,11 +2,8 @@ package ru.katin.kurs.controller.appointments;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
 import ru.katin.kurs.model.Appointment;
-import ru.katin.kurs.model.TypePension;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
 public class AppointmentTableItem {
